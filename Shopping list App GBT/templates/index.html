@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shopping List</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Shopping List</h1>
+    <form action="/add" method="POST">
+        <input type="text" name="item" placeholder="Add item">
+        <button type="submit">Add</button>
+    </form>
+    <ul>
+        {% for item in items %}
+            <li>
+                <i class="fas fa-shopping-cart"></i>
+                <span class="item-text">{{ item }}</span>
+                <a href="{{ url_for('delete_item', item_id=loop.index0) }}"><i class="fas fa-trash-alt"></i></a>
+            </li>
+        {% endfor %}
+    </ul>
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
+
+</body>
+</html>
